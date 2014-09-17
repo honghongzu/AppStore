@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>更新</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="public/css/ratchet.min.css">
+    <link rel="stylesheet" href="public/app.css">
+
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/ratchet.min.js"></script>
+    <script src="public/pull.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            PULL.init({
+                success: function (callback) {
+                    // simulate a network request that takes 2 seconds
+                    window.setTimeout(function () {
+                        var l = document.getElementById('list');
+                        for (var i = 0; i < 5; i++) { // insert 5 new items
+                            var li = document.createElement('li');
+                            li.innerHTML = 'List Item ' + Math.floor(Math.random() * 100);
+                            li.style.opacity = 0;
+                            l.insertBefore(li, l.firstChild);
+                        }
+                        window.setTimeout(function () {
+                            for (var i = 0; i < 5; i++) {
+                                l.children[i].style.opacity = 1;
+                            }
+                        }, 0);
+                        callback();  // pull callback when finished
+                    }, 2000);
+                },
+                start: function () {
+                    console.log('start');
+                },
+                cancel: function () {
+                    //alert('cancel');
+                }
+            });
+        }, false);
+    </script>
+</head>
+<body>
+<header class="bar bar-nav">
+    <h1 class="title">更新</h1>
+</header>
+
+<nav class="bar bar-tab">
+    <a class="tab-item" href="index.html">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item" href="index2.html">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">搜索</span>
+    </a>
+    <a class="tab-item active" href="index3.html">
+        <span class="icon icon-download"></span>
+        <span class="tab-label">更新</span>
+    </a>
+</nav>
+
+<div class="content" id='content' style='top: 0; -webkit-transition: top .5s ease-out'>
+    <div id='pull_to_refresh'>Pull and release to refresh</div>
+    <div style='display: none' id='refreshing'><img
+            src='data:image/gif;base64,R0lGODlhEAAQAMQAAP%2F%2F%2F%2B7u7t3d3bu7u6qqqpmZmYiIiHd3d2ZmZlVVVURERDMzMyIiIhEREQARAAAAAP%2F%2F%2FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2BQQFBwAQACwAAAAAEAAQAAAFdyAkQgGJJOWoQgIjBM8jkKsoPEzgyMGsCjPDw7ADpkQBxRDmSCRetpRA6Rj4kFBkgLC4IlUGhbNQIwXOYYWCXDufzYPDMaoKGBoKb886OjAKdgZAAgQkfCwzAgsDBAUCgl8jAQkHEAVkAoA1AgczlyIDczUDA2UhACH5BAUHABAALAAAAAAPABAAAAVjICSO0IGIATkqIiMKDaGKC8Q49jPMYsE0hQdrlABCGgvT45FKiRKQhWA0mPKGPAgBcTjsspBCAoH4gl%2BFmXNEUEBVAYHToJAVZK%2FXWoQQDAgBZioHaX8igigFKYYQVlkCjiMhACH5BAUHABAALAAAAAAQAA8AAAVgICSOUGGQqIiIChMESyo6CdQGdRqUENESI8FAdFgAFwqDISYwPB4CVSMnEhSej%2BFogNhtHyfRQFmIol5owmEta%2FfcKITB6y4choMBmk7yGgSAEAJ8JAVDgQFmKUCCZnwhACH5BAUHABAALAAAAAAQABAAAAViICSOYkGe4hFAiSImAwotB%2Bsi6Co2QxvjAYHIgBAqDoWCK2Bq6A40iA4yYMggNZKwGFgVCAQZotFwwJIF4QnxaC9IsZNgLtAJDKbraJCGzPVSIgEDXVNXA0JdgH6ChoCKKCEAIfkEBQcAEAAsAAAAABAADgAABUkgJI7QcZComIjPw6bs2kINLB5uW9Bo0gyQx8LkKgVHiccKVdyRlqjFSAApOKOtR810StVeU9RAmLqOxi0qRG3LptikAVQEh4UAACH5BAUHABAALAAAAAAQABAAAAVxICSO0DCQKBQQonGIh5AGB2sYkMHIqYAIN0EDRxoQZIaC6bAoMRSiwMAwCIwCggRkwRMJWKSAomBVCc5lUiGRUBjO6FSBwWggwijBooDCdiFfIlBRAlYBZQ0PWRANaSkED1oQYHgjDA8nM3kPfCmejiEAIfkEBQcAEAAsAAAAABAAEAAABWAgJI6QIJCoOIhFwabsSbiFAotGMEMKgZoB3cBUQIgURpFgmEI0EqjACYXwiYJBGAGBgGIDWsVicbiNEgSsGbKCIMCwA4IBCRgXt8bDACkvYQF6U1OADg8mDlaACQtwJCEAIfkEBQcAEAAsAAABABAADwAABV4gJEKCOAwiMa4Q2qIDwq4wiriBmItCCREHUsIwCgh2q8MiyEKODK7ZbHCoqqSjWGKI1d2kRp%2BRAWGyHg%2BDQUEmKliGx4HBKECIMwG61AgssAQPKA19EAxRKz4QCVIhACH5BAUHABAALAAAAAAQABAAAAVjICSOUBCQqHhCgiAOKyqcLVvEZOC2geGiK5NpQBAZCilgAYFMogo%2FJ0lgqEpHgoO2%2BGIMUL6p4vFojhQNg8rxWLgYBQJCASkwEKLC17hYFJtRIwwBfRAJDk4ObwsidEkrWkkhACH5BAUHABAALAAAAQAQAA8AAAVcICSOUGAGAqmKpjis6vmuqSrUxQyPhDEEtpUOgmgYETCCcrB4OBWwQsGHEhQatVFhB%2FmNAojFVsQgBhgKpSHRTRxEhGwhoRg0CCXYAkKHHPZCZRAKUERZMAYGMCEAIfkEBQcAEAAsAAABABAADwAABV0gJI4kFJToGAilwKLCST6PUcrB8A70844CXenwILRkIoYyBRk4BQlHo3FIOQmvAEGBMpYSop%2FIgPBCFpCqIuEsIESHgkgoJxwQAjSzwb1DClwwgQhgAVVMIgVyKCEAIfkECQcAEAAsAAAAABAAEAAABWQgJI5kSQ6NYK7Dw6xr8hCw%2BELC85hCIAq3Am0U6JUKjkHJNzIsFAqDqShQHRhY6bKqgvgGCZOSFDhAUiWCYQwJSxGHKqGAE%2F5EqIHBjOgyRQELCBB7EAQHfySDhGYQdDWGQyUhADs%3D'>
+        刷新中……
+    </div>
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="details.html" data-transition="slide-in">
+                <img class="media-object pull-left" src="http://placehold.it/64x64"
+                     alt="Placeholder image for Argo's poster">
+
+                <div class="media-body">
+                    应用1
+                    <p>办公类</p>
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="details.html" data-transition="slide-in">
+                <img class="media-object pull-left" src="http://placehold.it/64x64"
+                     alt="Placeholder image for Argo's poster">
+
+                <div class="media-body">
+                    应用2
+                    <p>报表类</p>
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="details.html" data-transition="slide-in">
+                <img class="media-object pull-left" src="http://placehold.it/64x64"
+                     alt="Placeholder image for Argo's poster">
+
+                <div class="media-body">
+                    应用3
+                    <p>新闻公告类</p>
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="details.html" data-transition="slide-in">
+                <img class="media-object pull-left" src="http://placehold.it/64x64"
+                     alt="Placeholder image for Argo's poster">
+
+                <div class="media-body">
+                    应用4
+                    <p>新闻公告类</p>
+                </div>
+            </a>
+        </li>
+        <li class="table-view-cell media">
+            <a class="navigate-right" href="details.html" data-transition="slide-in">
+                <img class="media-object pull-left" src="http://placehold.it/64x64"
+                     alt="Placeholder image for Argo's poster">
+
+                <div class="media-body">
+                    应用5
+                    <p>新闻公告类</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- /.content -->
+
+</body>
+</html>
