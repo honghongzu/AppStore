@@ -16,9 +16,9 @@ var PULL = function () {
 
     return {
         init: function (o) {
-            content = document.getElementById('content');
-            pullToRefresh = document.getElementById('pull_to_refresh');
-            refreshing = document.getElementById('refreshing');
+            content = document.getElementsByClassName('content')[0];
+            pullToRefresh = document.getElementsByClassName('pull-to-refresh')[0];
+            refreshing = document.getElementsByClassName('refreshing')[0];
             success = o.success;
             start = o.start;
             cancel = o.cancel;
@@ -57,7 +57,6 @@ var PULL = function () {
             });
 
             document.body.addEventListener('touchmove', function (e) {
-
                 if (e.changedTouches[0].screenY > 300) {
 
                 }
