@@ -1,37 +1,3 @@
-html, body, ul {
-    height: 100%;
-    font-family: Helvetica;
-    margin: 0;
-    padding: 0
-}
-
-li {
-    border-bottom: 1px solid #E0E0E0;
-    font-size: 20px;
-    font-weight: bold;
-    list-style: none outside none;
-    margin: 0;
-    padding: 8px 0 8px 10px;
-    position: relative;
-    -webkit-transition: opacity .75s ease-in
-}
-
-#window {
-    height: 100%;
-    overflow: hidden;
-}
-
-#content {
-    position: absolute;
-    background: #fff;
-    width: 100%
-}
-
-.pull-to-refresh, .refreshing {
-    line-height: 50px;
-    text-align: center;
-}
-
 .slider {
     height: 150px;
 }
@@ -125,3 +91,139 @@ hr {
 .col-1 {
     width: 8.333333333333332%
 }
+
+/**
+pull Begin
+*/
+.pull-to-refresh, .refreshing {
+    line-height: 50px;
+    text-align: center;
+}
+/**
+pull End
+*/
+/*
+x-loading Begin
+*/
+.x-loading-spinner {
+    font-size: 150%;
+    height: 1em;
+    width: 1em;
+    position: relative;
+    -webkit-transform-origin: 0.5em 0.5em;
+}
+
+.x-loading-spinner > span, .x-loading-spinner > span:before, .x-loading-spinner > span:after {
+    display: block;
+    position: absolute;
+    width: 0.1em;
+    height: 0.25em;
+    top: 0;
+    -webkit-transform-origin: 0.05em 0.5em;
+    -webkit-border-radius: 0.05em;
+    border-radius: 0.05em;
+    content: " ";
+}
+
+.x-loading-spinner > span.x-loading-top {
+    background-color: rgba(170, 170, 170, 0.99);
+}
+
+.x-loading-spinner > span.x-loading-top::after {
+    background-color: rgba(170, 170, 170, 0.9);
+}
+
+.x-loading-spinner > span.x-loading-left::before {
+    background-color: rgba(170, 170, 170, 0.8);
+}
+
+.x-loading-spinner > span.x-loading-left {
+    background-color: rgba(170, 170, 170, 0.7);
+}
+
+.x-loading-spinner > span.x-loading-left::after {
+    background-color: rgba(170, 170, 170, 0.6);
+}
+
+.x-loading-spinner > span.x-loading-bottom::before {
+    background-color: rgba(170, 170, 170, 0.5);
+}
+
+.x-loading-spinner > span.x-loading-bottom {
+    background-color: rgba(170, 170, 170, 0.4);
+}
+
+.x-loading-spinner > span.x-loading-bottom::after {
+    background-color: rgba(170, 170, 170, 0.35);
+}
+
+.x-loading-spinner > span.x-loading-right::before {
+    background-color: rgba(170, 170, 170, 0.3);
+}
+
+.x-loading-spinner > span.x-loading-right {
+    background-color: rgba(170, 170, 170, 0.25);
+}
+
+.x-loading-spinner > span.x-loading-right::after {
+    background-color: rgba(170, 170, 170, 0.2);
+}
+
+.x-loading-spinner > span.x-loading-top::before {
+    background-color: rgba(170, 170, 170, 0.15);
+}
+
+.x-loading-spinner > span {
+    left: 50%;
+    margin-left: -0.05em;
+}
+
+.x-loading-spinner > span.x-loading-top {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+
+.x-loading-spinner > span.x-loading-right {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+}
+
+.x-loading-spinner > span.x-loading-bottom {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+}
+
+.x-loading-spinner > span.x-loading-left {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+}
+
+.x-loading-spinner > span::before {
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+}
+
+.x-loading-spinner > span::after {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+}
+
+.x-loading-spinner {
+    -webkit-animation-name: x-loading-spinner-rotate;
+    -webkit-animation-duration: 1.2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes x-loading-spinner-rotate {
+    from {
+        -webkit-transform: rotate(30deg);
+    }
+    to {
+        -webkit-transform: rotate(330deg);
+    }
+}
+
+/*
+x-loading End
+*/
