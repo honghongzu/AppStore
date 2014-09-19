@@ -74,3 +74,20 @@ var PULL = function () {
         }
     };
 }();
+
+
+window.addEventListener('load', function () {
+	document.querySelector('.refresh').addEventListener('click', function (e) {
+     	window.location.href=window.location.href;
+  
+    });
+});
+
+
+
+
+
+
+
+
+
